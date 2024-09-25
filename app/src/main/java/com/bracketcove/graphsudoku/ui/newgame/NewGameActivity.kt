@@ -51,7 +51,9 @@ class NewGameActivity : AppCompatActivity(), NewGameContainer {
     /**
      * I want the other feature to be completely restarted each time
      */
+    @Deprecated("This method has been deprecated in favor of using the {@link OnBackPressedDispatcher} via {@link #getOnBackPressedDispatcher()}. The OnBackPressedDispatcher controls how back button events are dispatched to one or more {@link OnBackPressedCallback} objects.")
     override fun onBackPressed() {
+        super.onBackPressed()
         startActiveGameActivity()
     }
 

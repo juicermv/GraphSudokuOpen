@@ -1,16 +1,17 @@
 plugins {
     id 'com.android.application'
     id 'kotlin-android'
-    id 'com.google.protobuf' version "0.8.12"
+    id 'com.google.protobuf' version "0.9.1"
+    id 'org.jetbrains.kotlin.plugin.compose' version "$kotlin_version"
 }
 
 android {
-    compileSdkVersion 30
+    compileSdk 34
 
     defaultConfig {
         applicationId "com.bracketcove.graphsudoku"
         minSdkVersion 21
-        targetSdkVersion 30
+        targetSdkVersion 34
         versionCode 14
         versionName "1.3.0"
 
@@ -34,7 +35,7 @@ android {
     }
     kotlinOptions {
         jvmTarget = '1.8'
-        useIR = true
+        //useIR = true
     }
     buildFeatures {
         compose true
@@ -43,31 +44,32 @@ android {
         kotlinCompilerExtensionVersion compose_version
         kotlinCompilerVersion kotlin_version
     }
+    namespace 'com.bracketcove.graphsudoku'
 }
 
 dependencies {
     //Proto Datastore
-    implementation "androidx.datastore:datastore:1.0.0"
-    implementation  "com.google.protobuf:protobuf-javalite:3.14.0"
+    implementation "androidx.datastore:datastore:1.1.1"
+    implementation 'com.google.protobuf:protobuf-javalite:4.28.2'
 
     //Kotlin stuff
-    implementation 'org.jetbrains.kotlinx:kotlinx-coroutines-android:1.5.0'
+    implementation 'org.jetbrains.kotlinx:kotlinx-coroutines-android:1.9.0'
     implementation "org.jetbrains.kotlin:kotlin-stdlib:$kotlin_version"
-    implementation 'androidx.core:core-ktx:1.6.0'
+    implementation 'androidx.core:core-ktx:1.13.1'
 
-    implementation 'androidx.appcompat:appcompat:1.3.1'
+    implementation 'androidx.appcompat:appcompat:1.7.0'
 
     //Compose stuff
-    implementation 'androidx.constraintlayout:constraintlayout-compose:1.0.0-beta02'
+    implementation 'androidx.constraintlayout:constraintlayout-compose:1.0.1'
     implementation "androidx.compose.ui:ui:$compose_version"
-    implementation "androidx.activity:activity-compose:1.3.1"
+    implementation "androidx.activity:activity-compose:1.9.2"
     implementation "androidx.compose.ui:ui-tooling:$compose_version"
     implementation "androidx.compose.material:material:$compose_version"
     implementation "androidx.compose.material:material-icons-extended:$compose_version"
-    implementation 'com.google.android.material:material:1.4.0'
+    implementation 'com.google.android.material:material:1.12.0'
 
-    testImplementation 'junit:junit:4.+'
-    debugImplementation 'com.squareup.leakcanary:leakcanary-android:2.6'
+    testImplementation 'junit:junit:4.13.2'
+    debugImplementation 'com.squareup.leakcanary:leakcanary-android:2.14'
 }
 
 protobuf {
